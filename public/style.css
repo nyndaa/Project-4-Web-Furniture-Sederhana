@@ -1,0 +1,273 @@
+body {
+  margin: 0;
+  font-family:'Poppins', sans-serif;
+  background: #f5f5f5;
+}
+
+/* NAVBAR */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center; /* ini penting biar sejajar tengah */
+  padding: 15px 40px;
+  background: #644704;
+  color: white;
+}
+
+/* LOGO */
+.logo {
+  font-size: 20px;
+  font-weight: 800;
+  letter-spacing: 3px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+}
+
+/* ICON */
+.logo i{
+  font-size: 22px;
+}
+
+/* efek hover logo */
+.logo:hover {
+  color: #ffcc70;
+  transition: 0.3s;
+}
+
+/* MENU */
+.navbar ul {
+  display: flex;
+  list-style: none;
+  gap: 25px;
+  margin: 0;
+  padding: 0;
+}
+
+.navbar a {
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+  position: relative;
+}
+
+/* hover underline keren */
+.navbar a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -5px;
+  width: 0%;
+  height: 2px;
+  background: #ffcc70;
+  transition: 0.3s;
+}
+
+.navbar a:hover::after {
+  width: 100%;
+}
+
+/* HERO */
+.hero {
+  text-align: center;
+  padding: 200px;
+
+  /* overlay transparan */
+  background:
+    linear-gradient(rgba(0, 0, 0, 0.2) ,rgba(0,0,0,0.6)),
+    url("/image/furniture3.jpg");
+
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  color: white;
+}
+
+/* HERO TITLE */
+.hero-title{
+   font-style:italic;
+  font-size:70px;
+  font-weight:700;
+  letter-spacing:2px;
+}
+
+.hero-title span{
+  color: #ffcc70;
+}
+
+/* HERO TEXT */
+.hero-description{
+  font-size:22px;
+  font-weight:300;
+}
+
+.hero-btn{
+  display:inline-block;
+  margin-top:25px;
+  padding:14px 32px;
+  background:#ffcc70;
+  color:#222;
+  text-decoration:none;
+  border-radius:40px;
+  font-weight:600;
+  transition:0.3s;
+}
+
+.hero-btn:hover{
+  transform:translateY(-3px);
+}
+
+/* PRODUCT */
+.product {
+  padding: 40px 80px;
+  text-align: center;
+}
+
+/* GRID */
+.grid {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+
+/* CARD */
+.card {
+  background: white;
+  padding: 30px;
+  width: 320px; /* diperlebar */
+  border-radius: 18px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+  transition: 0.3s;
+}
+
+.card img{
+  width: 100%;
+  height: 260px;
+  object-fit: cover;
+  border-radius: 14px;
+  display: block;
+  margin: 15px 0;
+}
+
+/* EFEK HOVER */
+.card:hover {
+  transform: translateY(-5px);
+}
+
+/*BAGIAN ABOUT*/
+.about{
+  padding:80px;
+  text-align:center;
+
+  background:
+    linear-gradient(rgba(123, 95, 8, 0.75)),
+    url("/image/about-bg.jpg");
+
+  background-size:cover;
+  background-position:center;
+  background-repeat:no-repeat;
+
+  color:rgb(0, 0, 0);
+}
+
+.about-grid{
+  display:flex;
+  justify-content:center;
+  gap:30px;
+  flex-wrap:wrap;
+}
+
+.about-card{
+  background:white;
+  width:280px;
+  padding:30px;
+  border-radius:20px;
+  box-shadow:0 4px 15px rgba(0,0,0,0.08);
+}
+
+.about-card i{
+  font-size:40px;
+  color:#644704;
+  margin-bottom:15px;
+}
+
+/* TESTIMONIAL */
+.testimonial{
+  padding:100px 80px;
+  background:#f9f7f3;
+  text-align:center;
+}
+
+.testimonial-title{
+  font-size:42px;
+  margin-bottom:60px;
+  color:#222;
+}
+
+/* CONTAINER */
+.testimonial-container{
+  display:flex;
+  justify-content:center;
+  gap:40px;
+  flex-wrap:wrap;
+}
+
+/* ITEM */
+.testimonial-item{
+  max-width:420px;
+  text-align:left;
+}
+
+/* QUOTE ICON */
+.quote i{
+  font-size:42px;
+  color:#ffcc70;
+  margin-bottom:20px;
+}
+
+/* TEXT */
+.testimonial-item p{
+  font-size:20px;
+  line-height:1.8;
+  color:#444;
+  margin-bottom:25px;
+}
+
+/* CUSTOMER */
+.customer{
+  display:flex;
+  align-items:center;
+  gap:15px;
+  margin-top:25px;
+}
+
+/* FOTO CUSTOMER */
+.customer img{
+  width:60px;
+  height:60px;
+  border-radius:50%;
+  object-fit:cover;
+  border:3px solid #ffcc70;
+}
+
+.customer h4{
+  margin:0;
+  font-size:20px;
+  color:#111;
+}
+
+.customer span{
+  color:#777;
+  font-size:14px;
+}
+
+/* FOOTER */
+footer {
+  text-align: center;
+  padding: 20px;
+  background: #644704;
+  color: white;
+}
