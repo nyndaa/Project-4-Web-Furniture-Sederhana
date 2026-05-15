@@ -14,42 +14,41 @@
 <!-- CATEGORY -->
 <section class="category-section">
   <div class="category-list">
-    <button class="category-btn active">
+    <button class="category-btn active" data-filter="all">
       <i class="fa-solid fa-border-all"></i>
       Semua
     </button>
 
-    <button class="category-btn">
-      <i class="fa-solid fa-couch"></i>
-      Sofa
+    <button class="category-btn" data-filter="sofa">
+        <i class="fa-solid fa-couch"></i> sofa
     </button>
 
-    <button class="category-btn">
+    <button class="category-btn" data-filter="kursi">
       <i class="fa-solid fa-chair"></i>
       Kursi
     </button>
 
-    <button class="category-btn">
+    <button class="category-btn" data-filter="meja">
       <i class="fa-solid fa-table"></i>
       Meja
     </button>
 
-    <button class="category-btn">
+    <button class="category-btn" data-filter="lemari">
       <i class="fa-solid fa-box-open"></i>
       Lemari
     </button>
 
-    <button class="category-btn">
+    <button class="category-btn" data-filter="rak">
       <i class="fa-solid fa-layer-group"></i>
       Rak
     </button>
 
-     <button class="category-btn">
+     <button class="category-btn" data-filter="tempat-tidur">
       <i class="fa-solid fa-layer-group"></i>
       Tempat Tidur
     </button>
 
-    <button class="category-btn">
+    <button class="category-btn" data-filter="lampu-tidur">
       <i class="fa-solid fa-layer-group"></i>
       Lampu Tidur
     </button>
@@ -63,13 +62,13 @@
   <div class="catalog-grid">
 
     <!-- CARD -->
-    <div class="catalog-card">
+    <div class="catalog-card" data-category="sofa">
       <div class="catalog-image">
-        <img src="/image/sofa.jpg" alt="Sofa Luxury">
+        <img src="/image/sofa.jpg" alt="sofa Luxury">
       </div>
 
       <div class="catalog-content">
-        <span class="catalog-category">Sofa</span>
+        <span class="catalog-category">sofa</span>
 
         <h3>Sofa Luxury Modern</h3>
 
@@ -87,7 +86,7 @@
     </div>
 
     <!-- CARD -->
-    <div class="catalog-card">
+    <div class="catalog-card" data-category="meja">
       <div class="catalog-image">
         <img src="/image/meja.jpg" alt="Meja">
       </div>
@@ -111,7 +110,7 @@
     </div>
 
     <!-- CARD -->
-    <div class="catalog-card">
+    <div class="catalog-card" data-category="kursi">
       <div class="catalog-image">
         <img src="/image/kursi.jpg" alt="Kursi">
       </div>
@@ -135,7 +134,7 @@
     </div>
 
     <!-- CARD -->
-    <div class="catalog-card">
+    <div class="catalog-card" data-category="lemari">
       <div class="catalog-image">
         <img src="/image/lemari2.jpg" alt="Lemari">
       </div>
@@ -159,7 +158,7 @@
     </div>
 
     <!-- CARD -->
-    <div class="catalog-card">
+    <div class="catalog-card" data-category="rak">
       <div class="catalog-image">
         <img src="/image/rak.jpg" alt="Rak">
       </div>
@@ -183,7 +182,7 @@
     </div>
 
     <!-- CARD -->
-    <div class="catalog-card">
+    <div class="catalog-card" data-category="meja">
       <div class="catalog-image">
         <img src="/image/meja-makan.jpg" alt="Meja Makan">
       </div>
@@ -207,7 +206,7 @@
     </div>
 
     <!-- CARD -->
-    <div class="catalog-card">
+    <div class="catalog-card" data-category="tempat-tidur">
       <div class="catalog-image">
         <img src="/image/Tempat-Tidur.jpg" alt="Tempat Tidur">
       </div>
@@ -231,13 +230,13 @@
     </div>
 
     <!-- CARD -->
-    <div class="catalog-card">
+    <div class="catalog-card" data-category="rak">
       <div class="catalog-image">
         <img src="/image/rak2.jpg" alt="Rak">
       </div>
 
       <div class="catalog-content">
-        <span class="catalog-category">Tempat Tidur</span>
+        <span class="catalog-category">Rak</span>
 
         <h3>Rak Dekorasi Clasic</h3>
 
@@ -255,7 +254,7 @@
     </div>
 
     <!-- CARD -->
-    <div class="catalog-card">
+    <div class="catalog-card" data-category="lampu-tidur">
       <div class="catalog-image">
         <img src="/image/Lampu-Tidur.jpg" alt="Lampu Tidur">
       </div>
@@ -280,3 +279,30 @@
   </div>
 
 </section>
+
+<!-- SCRIPT WAJIB DI BAWAH -->
+<script>
+const buttons = document.querySelectorAll(".category-btn");
+const cards = document.querySelectorAll(".catalog-card");
+
+buttons.forEach(btn => {
+  btn.addEventListener("click", () => {
+
+    const filter = btn.getAttribute("data-filter");
+
+    buttons.forEach(b => b.classList.remove("active"));
+    btn.classList.add("active");
+
+    cards.forEach(card => {
+      const category = card.getAttribute("data-category");
+
+      if (filter === "all" || filter === category) {
+        card.style.display = "block";
+      } else {
+        card.style.display = "none";
+      }
+    });
+
+  });
+});
+</script>
