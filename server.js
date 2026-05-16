@@ -220,3 +220,50 @@ app.get("/clear-cart", (req, res) => {
 app.listen(PORT, () => {
   console.log(`jalan di http://localhost:${PORT}`);
 });
+
+/* DETAIL PRODUCT */
+app.get("/view/detail/:product", (req, res) => {
+
+  const navbar = load("navbar.html");
+  const footer = load("footer.html");
+
+  const productFile = `detail/${req.params.product}.html`;
+
+  try {
+
+    const content = load(productFile);
+
+    res.send(`
+    <!DOCTYPE html>
+    <html lang="id">
+    <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+      <title>Detail Product | QueenFurni</title>
+
+      <link rel="stylesheet" href="/style.css">
+
+      <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    </head>
+
+    <body>
+
+      ${navbar}
+
+      ${content}
+
+      ${footer}
+
+    </body>
+    </html>
+    `);
+
+  } catch (error) {
+
+    res.status(404).send("Product tidak ditemukan");
+
+  }
+
+});
