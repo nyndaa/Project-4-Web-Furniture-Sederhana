@@ -410,6 +410,7 @@ footer {
 
 /* IMAGE */
 .catalog-image{
+  position: relative;
   overflow:hidden;
 }
 
@@ -478,4 +479,57 @@ footer {
 .catalog-bottom a:hover{
   background:#ffcc70;
   color:#222;
+}
+
+/* OVERLAY GELAP */
+.catalog-image::after{
+  content:"";
+  position:absolute;
+  inset:0;
+
+  background:rgba(0,0,0,0.45);
+
+  opacity:0;
+  transition:0.4s;
+}
+
+/* SAAT HOVER */
+.catalog-card:hover .catalog-image::after{
+  opacity:1;
+}
+
+/* ICON MATA */
+.view-btn{
+  position:absolute;
+
+  top:22%;
+  left:50%;
+
+  transform:translate(-50%, -50%);
+
+  width:60px;
+  height:60px;
+
+  border-radius:50%;
+
+  background:white;
+  color:#222;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  font-size:22px;
+
+  text-decoration:none;
+
+  opacity:0;
+  z-index:2;
+
+  transition:0.4s;
+}
+
+/* MUNCUL SAAT HOVER */
+.catalog-card:hover .view-btn{
+  opacity:1;
 }

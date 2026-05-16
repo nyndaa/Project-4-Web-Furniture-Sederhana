@@ -2,9 +2,10 @@
   <div class="search-box">
     <input
       type="text"
+      id="searchInput"
       placeholder="Cari furniture impian Anda..."
     >
-    <button>
+    <button id="searchBtn">
       <i class="fa-solid fa-magnifying-glass"></i>
       Cari
     </button>
@@ -58,7 +59,6 @@
 
 <!-- PRODUK -->
 <section class="catalog">
-
   <div class="catalog-grid">
 
     <!-- CARD -->
@@ -66,6 +66,11 @@
       <div class="catalog-image">
         <img src="/image/sofa.jpg" alt="sofa Luxury">
       </div>
+  
+      <!-- ICON MATA -->
+    <a href="/detail-sofa-luxury-modern" class="view-btn">
+      <i class="fa-solid fa-eye"></i>
+    </a>
 
       <div class="catalog-content">
         <span class="catalog-category">sofa</span>
@@ -91,6 +96,11 @@
         <img src="/image/meja.jpg" alt="Meja">
       </div>
 
+  <!-- ICON MATA -->
+    <a href="/detail-meja-kayu-minimalis" class="view-btn">
+      <i class="fa-solid fa-eye"></i>
+    </a>
+
       <div class="catalog-content">
         <span class="catalog-category">Meja</span>
 
@@ -114,6 +124,11 @@
       <div class="catalog-image">
         <img src="/image/kursi.jpg" alt="Kursi">
       </div>
+
+      <!-- ICON MATA -->
+    <a href="/detail-kursi-santai-premium" class="view-btn">
+      <i class="fa-solid fa-eye"></i>
+    </a>
 
       <div class="catalog-content">
         <span class="catalog-category">Kursi</span>
@@ -139,6 +154,11 @@
         <img src="/image/lemari2.jpg" alt="Lemari">
       </div>
 
+       <!-- ICON MATA -->
+    <a href="/detail-lemari-modern" class="view-btn">
+      <i class="fa-solid fa-eye"></i>
+    </a>
+
       <div class="catalog-content">
         <span class="catalog-category">Lemari</span>
 
@@ -162,6 +182,11 @@
       <div class="catalog-image">
         <img src="/image/rak.jpg" alt="Rak">
       </div>
+
+      <!-- ICON MATA -->
+    <a href="/detail-rak-dekorasi" class="view-btn">
+      <i class="fa-solid fa-eye"></i>
+    </a>
 
       <div class="catalog-content">
         <span class="catalog-category">Rak</span>
@@ -187,6 +212,11 @@
         <img src="/image/meja-makan.jpg" alt="Meja Makan">
       </div>
 
+      <!-- ICON MATA -->
+    <a href="/detail-meja-makan-premium" class="view-btn">
+      <i class="fa-solid fa-eye"></i>
+    </a>
+
       <div class="catalog-content">
         <span class="catalog-category">Meja Makan</span>
 
@@ -210,6 +240,11 @@
       <div class="catalog-image">
         <img src="/image/Tempat-Tidur.jpg" alt="Tempat Tidur">
       </div>
+
+       <!-- ICON MATA -->
+    <a href="/detail-tempat-tidur-nyaman" class="view-btn">
+      <i class="fa-solid fa-eye"></i>
+    </a>
 
       <div class="catalog-content">
         <span class="catalog-category">Tempat Tidur</span>
@@ -235,6 +270,11 @@
         <img src="/image/rak2.jpg" alt="Rak">
       </div>
 
+       <!-- ICON MATA -->
+    <a href="/detail-rak-dekorasi-classic" class="view-btn">
+      <i class="fa-solid fa-eye"></i>
+    </a>
+
       <div class="catalog-content">
         <span class="catalog-category">Rak</span>
 
@@ -258,6 +298,11 @@
       <div class="catalog-image">
         <img src="/image/Lampu-Tidur.jpg" alt="Lampu Tidur">
       </div>
+
+      <!-- ICON MATA -->
+    <a href="/detail-lampu-tidur-modern" class="view-btn">
+      <i class="fa-solid fa-eye"></i>
+    </a>
 
       <div class="catalog-content">
         <span class="catalog-category">Lampu Tidur</span>
@@ -283,6 +328,11 @@
         <img src="/image/Lampu-Tidur2.jpg" alt="Lampu Tidur">
       </div>
 
+       <!-- ICON MATA -->
+    <a href="/detail-lampu-tidur-classic" class="view-btn">
+      <i class="fa-solid fa-eye"></i>
+    </a>
+
       <div class="catalog-content">
         <span class="catalog-category">Lampu Tidur</span>
 
@@ -306,6 +356,11 @@
         <div class="catalog-image">
             <img src="/image/kursi2.jpg" alt="Kursi">
         </div>
+
+        <!-- ICON MATA -->
+    <a href="/detail-kursi-classic" class="view-btn">
+      <i class="fa-solid fa-eye"></i>
+    </a>
 
         <div class="catalog-content">
             <span class="catalog-category">Kursi Classic</span>
@@ -355,5 +410,31 @@ buttons.forEach(btn => {
     });
 
   });
+});
+
+
+/* SEARCH PRODUCT */
+const searchInput = document.getElementById("searchInput");
+const searchBtn = document.getElementById("searchBtn");
+
+searchBtn.addEventListener("click", () => {
+
+  const keyword = searchInput.value.toLowerCase();
+
+  cards.forEach(card => {
+
+    const title = card
+      .querySelector("h3")
+      .textContent
+      .toLowerCase();
+
+    if (title.includes(keyword)) {
+      card.style.display = "block";
+    } else {
+      card.style.display = "none";
+    }
+
+  });
+
 });
 </script>
