@@ -575,7 +575,7 @@ footer {
   margin-bottom:18px;
 }
 
-..detail-content h1{
+.detail-content h1{
   font-size: clamp(50px, 8vw, 80px);
   margin-top: 20px;
 }
