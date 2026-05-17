@@ -143,6 +143,51 @@ body {
   transition: 0.3s;
 }
 
+/* CARD */
+.card{
+  position: relative;
+  overflow: hidden;
+}
+
+/*TOMBOL MATA*/
+.home-view-btn{
+  position: absolute;
+
+  top: 50%;
+  left: 50%;
+
+  transform: translate(-50%, -50%);
+
+  width: 55px;
+  height: 55px;
+
+  border-radius: 50%;
+
+  background: white;
+  color: #222;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  text-decoration: none;
+  font-size: 18px;
+
+  opacity: 0;
+
+  transition: 0.3s;
+}
+
+/* HOVER */
+.card:hover .home-view-btn{
+  opacity: 1;
+}
+
+/* EFEK */
+.home-view-btn:hover{
+  background: #ddcd99;
+  transform: translate(-50%, -50%) scale(1.1);
+}
 .card img{
   width: 100%;
   height: 260px;
