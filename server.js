@@ -175,14 +175,38 @@ app.get("/keranjang", (req, res) => {
 
       <div class="cart-list">
 
-        ${cart.length ? items : "<p>Keranjang masih kosong 🛒</p>"}
+        ${cart.length ? items : `
+            <div class="empty-cart">
 
+              <i class="fa-solid fa-cart-shopping"></i>
+
+              <h2>Keranjang Masih Kosong Nihh</h2>
+
+              <p>
+               ✨ Yuk pilih furniture favorit kamu dulu ✨
+              </p>
+
+              <a href="/katalog" class="empty-btn">
+                Belanja Sekarang
+              </a>
+
+            </div>
+          `}
       </div>
 
+      ${cart.length ? `
       <div class="cart-action">
-        <a href="/katalog" class="btn-shop">Lanjut Belanja</a>
-        <a href="/clear-cart" class="btn-clear">Kosongkan</a>
+
+        <a href="/katalog" class="btn-shop">
+         Lanjut Belanja
+         </a>
+
+         <a href="/clear-cart" class="btn-clear">
+           Kosongkan
+        </a>
+
       </div>
+      ` : ""}
 
     </section>
 
