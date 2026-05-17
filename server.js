@@ -126,7 +126,7 @@ app.get("/add-to-cart", (req, res) => {
     cart.push(product);
   }
 
-  res.redirect("/katalog");
+  res.redirect("/keranjang");
 
 });
 
@@ -216,10 +216,6 @@ app.get("/clear-cart", (req, res) => {
 
 });
 
-/* SERVER START         */
-app.listen(PORT, () => {
-  console.log(`jalan di http://localhost:${PORT}`);
-});
 
 /* DETAIL PRODUCT */
 app.get("/view/detail/:product", (req, res) => {
@@ -266,4 +262,9 @@ app.get("/view/detail/:product", (req, res) => {
 
   }
 
+});
+
+/* SERVER START         */
+app.listen(PORT, () => {
+  console.log(`jalan di http://localhost:${PORT}`);
 });
