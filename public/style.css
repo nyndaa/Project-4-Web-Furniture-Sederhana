@@ -185,7 +185,7 @@ body {
 
 /* EFEK */
 .home-view-btn:hover{
-  background: #ddcd99;
+  background:#ffcc70;
   transform: translate(-50%, -50%) scale(1.1);
 }
 .card img{
