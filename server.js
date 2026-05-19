@@ -11,67 +11,12 @@ app.use(express.static("public"));
 let cart = [];
 
 /* DATABASE PRODUCT */
-const products = [
-  {
-    id: 1,
-    slug: "sofa-luxury-modern",
-    nama: "Sofa Luxury Modern",
-    kategori: "Sofa",
-    harga: "Rp 8.500.000",
-    gambar: "/image/sofa.jpg",
-    deskripsi: "Sofa premium dengan desain elegant untuk ruang tamu modern."
-  },
-
-  {
-    id: 2,
-    slug: "meja-kayu-minimalis",
-    nama: "Meja Kayu Minimalis",
-    kategori: "Meja",
-    harga: "Rp 4.200.000",
-    gambar: "/image/meja.jpg",
-    deskripsi: "Meja aesthetic dengan sentuhan kayu premium modern."
-  },
-
-  {
-    id: 3,
-    slug: "kursi-santai-premium",
-    nama: "Kursi Santai Premium",
-    kategori: "Kursi",
-    harga: "Rp 2.800.000",
-    gambar: "/image/kursi.jpg",
-    deskripsi: "Kursi ergonomis dengan desain aesthetic dan nyaman."
-  },
-
-   {
-    "id": 4,
-    "slug": "lemari-modern",
-    "nama": "Lemari Modern",
-    "kategori": "Lemari",
-    "harga": "Rp 7.300.000",
-    "gambar": "/image/lemari2.jpg",
-    "deskripsi": "Lemari multifungsi dengan kapasitas besar dan elegan."
-  },
-
-  {
-    "id": 5,
-    "slug": "rak-dekorasi",
-    "nama": "Rak Dekorasi",
-    "kategori": "Rak",
-    "harga": "Rp 1.900.000",
-    "gambar": "/image/rak.jpg",
-    "deskripsi": "Rak modern untuk dekorasi ruangan agar lebih aesthetic."
-  },
-
-  {
-    "id": 6,
-    "slug": "meja-makan-premium",
-    "nama": "Meja Makan Premium",
-    "kategori": "Meja",
-    "harga": "Rp 9.700.000",
-    "gambar": "/image/meja-makan.jpg",
-    "deskripsi": "Set meja makan modern dengan nuansa mewah dan hangat."
-  }
-];
+const products = JSON.parse(
+  fs.readFileSync(
+    path.join(__dirname, "data", "products.json"),
+    "utf-8"
+  )
+);
 
 /* LOAD HTML */
 function load(file) {
@@ -148,28 +93,95 @@ app.get("/", (req, res) => {
 app.get("/katalog", (req, res) => {
 
   const navbar = load("navbar.html");
-  const content = load("katalog.html");
+  let content = load("katalog.html");
   const footer = load("footer.html");
+
+  const catalogProducts = products.map(product => `
+
+    <div class="catalog-card"
+      data-category="${product.kategori.toLowerCase().replace(/\s/g, "-")}">
+
+      <div class="catalog-image">
+
+        <img
+          src="${product.gambar}"
+          alt="${product.nama}"
+        >
+
+      </div>
+
+      <!-- ICON MATA -->
+      <a
+        href="/product/${product.slug}"
+        class="view-btn"
+      >
+        <i class="fa-solid fa-eye"></i>
+      </a>
+
+      <div class="catalog-content">
+
+        <span class="catalog-category">
+          ${product.kategori}
+        </span>
+
+        <h3>${product.nama}</h3>
+
+        <p>
+          ${product.deskripsi}
+        </p>
+
+        <div class="catalog-bottom">
+
+          <h4>${product.harga}</h4>
+
+          <a
+            href="/add-to-cart?product=${product.nama}"
+            class="cart-btn"
+          >
+            <i class="fa-solid fa-cart-plus"></i>
+          </a>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  `).join("");
+
+  content = content.replace(
+    "{{CATALOG_PRODUCTS}}",
+    catalogProducts
+  );
 
   res.send(`
   <!DOCTYPE html>
   <html lang="id">
+
   <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    >
 
     <title>Katalog | QueenFurni</title>
 
     <link rel="stylesheet" href="/style.css">
 
-    <link rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    >
   </head>
 
   <body>
+
     ${navbar}
     ${content}
     ${footer}
+
   </body>
   </html>
   `);
