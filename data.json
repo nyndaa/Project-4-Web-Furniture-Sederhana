@@ -1,0 +1,111 @@
+[
+  {
+    "id": 1,
+    "slug": "sofa-luxury-modern",
+    "nama": "Sofa Luxury Modern",
+    "kategori": "Sofa",
+    "harga": "Rp 8.500.000",
+    "gambar": "/image/sofa.jpg",
+    "deskripsi": "Sofa premium dengan desain elegant untuk ruang tamu modern."
+  },
+
+  {
+    "id": 2,
+    "slug": "meja-kayu-minimalis",
+    "nama": "Meja Kayu Minimalis",
+    "kategori": "Meja",
+    "harga": "Rp 4.200.000",
+    "gambar": "/image/meja.jpg",
+    "deskripsi": "Meja aesthetic dengan sentuhan kayu premium modern."
+  },
+
+  {
+    "id": 3,
+    "slug": "kursi-santai-premium",
+    "nama": "Kursi Santai Premium",
+    "kategori": "Kursi",
+    "harga": "Rp 2.800.000",
+    "gambar": "/image/kursi.jpg",
+    "deskripsi": "Kursi ergonomis dengan desain aesthetic dan nyaman."
+  },
+
+  {
+    "id": 4,
+    "slug": "lemari-modern",
+    "nama": "Lemari Modern",
+    "kategori": "Lemari",
+    "harga": "Rp 7.300.000",
+    "gambar": "/image/lemari2.jpg",
+    "deskripsi": "Lemari multifungsi dengan kapasitas besar dan elegan."
+  },
+
+  {
+    "id": 5,
+    "slug": "rak-dekorasi",
+    "nama": "Rak Dekorasi",
+    "kategori": "Rak",
+    "harga": "Rp 1.900.000",
+    "gambar": "/image/rak.jpg",
+    "deskripsi": "Rak modern untuk dekorasi ruangan agar lebih aesthetic."
+  },
+
+  {
+    "id": 6,
+    "slug": "meja-makan-premium",
+    "nama": "Meja Makan Premium",
+    "kategori": "Meja",
+    "harga": "Rp 9.700.000",
+    "gambar": "/image/meja-makan.jpg",
+    "deskripsi": "Set meja makan modern dengan nuansa mewah dan hangat."
+  },
+
+  {
+    "id": 7,
+    "slug": "tempat-tidur-nyaman",
+    "nama": "Tempat Tidur Nyaman",
+    "kategori": "Tempat Tidur",
+    "harga": "Rp 15.900.000",
+    "gambar": "/image/Tempat-Tidur.jpg",
+    "deskripsi": "Nikmati kenyamanan tidur anda dengan Tempat Tidur yang Nyaman."
+  },
+
+  {
+    "id": 8,
+    "slug": "rak-dekorasi-classic",
+    "nama": "Rak Dekorasi Classic",
+    "kategori": "Rak",
+    "harga": "Rp 1.900.000",
+    "gambar": "/image/rak2.jpg",
+    "deskripsi": "Rak dekorasi dengan desain klasik agar ruangan semakin aesthetic."
+  },
+
+  {
+    "id": 9,
+    "slug": "lampu-tidur-modern",
+    "nama": "Lampu Tidur Modern",
+    "kategori": "Lampu Tidur",
+    "harga": "Rp 900.000",
+    "gambar": "/image/Lampu-Tidur.jpg",
+    "deskripsi": "Lampu tidur dengan desain modern dan nyaman."
+  },
+
+  {
+    "id": 10,
+    "slug": "lampu-tidur-classic",
+    "nama": "Lampu Tidur Classic",
+    "kategori": "Lampu Tidur",
+    "harga": "Rp 700.000",
+    "gambar": "/image/Lampu-Tidur2.jpg",
+    "deskripsi": "Lampu tidur dengan desain classic untuk suasana tidur yang lebih nyaman."
+  },
+
+  {
+    "id": 11,
+    "slug": "kursi-classic",
+    "nama": "Kursi Classic",
+    "kategori": "Kursi",
+    "harga": "Rp 1.000.000",
+    "gambar": "/image/kursi2.jpg",
+    "deskripsi": "Kursi dengan desain klasik untuk suasana ruangan yang lebih nyaman."
+  }
+]
