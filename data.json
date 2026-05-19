@@ -1,4 +1,4 @@
-[
+const products = [
   {
     "id": 1,
     "slug": "sofa-luxury-modern",
@@ -108,4 +108,4 @@
     "gambar": "/image/kursi2.jpg",
     "deskripsi": "Kursi dengan desain klasik untuk suasana ruangan yang lebih nyaman."
   }
-]
+];
