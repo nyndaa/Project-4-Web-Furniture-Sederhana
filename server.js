@@ -355,10 +355,24 @@ app.get("/keranjang", (req, res) => {
       </div>
     `;
 
-    const totalItem = cart.reduce(
+    const totalHarga = cart.reduce((total, item) => {
+    const harga = Number(item.harga.replace(/[^0-9]/g, ""));
+
+    return total + (harga * item.qty);
+
+  }, 0);
+
+  const totalItem = cart.reduce(
   (total, item) => total + item.qty,
   0
 );
+
+  const formatRupiah = (angka) => {
+  return new Intl.NumberFormat("id-ID", {
+    style: "currency",
+    currency: "IDR"
+  }).format(angka);
+};
 
 const cartSummary = `
   <h2>Ringkasan Belanja</h2>
@@ -366,6 +380,11 @@ const cartSummary = `
   <div class="summary-row">
     <span>Total Item</span>
     <strong>${totalItem}</strong>
+  </div>
+
+  <div class="summary-row">
+    <span>Total Harga</span>
+    <strong>${formatRupiah(totalHarga)}</strong>
   </div>
 
   <a href="#" class="checkout-btn">
