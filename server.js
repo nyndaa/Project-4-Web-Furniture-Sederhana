@@ -135,7 +135,7 @@ app.get("/katalog", (req, res) => {
           <h4>${product.harga}</h4>
 
           <a
-            href="/add-to-cart?product=${product.nama}"
+            href="/add-to-cart?id=${product.id}"
             class="cart-btn"
           >
             <i class="fa-solid fa-cart-plus"></i>
@@ -225,104 +225,207 @@ app.get("/kontak", (req, res) => {
 /* ADD TO CART          */
 app.get("/add-to-cart", (req, res) => {
 
-  const product = req.query.product;
+  const id = Number(req.query.id);
 
-  if (product) {
-    cart.push(product);
+  const product = products.find(
+    p => p.id === id
+  );
+
+  if (!product) {
+    return res.redirect("/katalog");
+  }
+
+  const existing = cart.find(
+    item => item.id === id
+  );
+
+  if (existing) {
+    existing.qty++;
+  } else {
+    cart.push({
+      id: product.id,
+      nama: product.nama,
+      harga: product.harga,
+      gambar: product.gambar,
+      qty: 1
+    });
   }
 
   res.redirect("/keranjang");
 
 });
 
+/* TAMBAH JUMLAH */
+app.get("/increase/:index", (req, res) => {
+
+  const index = req.params.index;
+
+  cart[index].qty++;
+
+  res.redirect("/keranjang");
+
+});
+
+/* KURANG JUMLAH */
+app.get("/decrease/:index", (req, res) => {
+
+  const index = req.params.index;
+
+  if (cart[index].qty > 1) {
+    cart[index].qty--;
+  }
+
+  res.redirect("/keranjang");
+
+});
 
 /* HALAMAN KERANJANG    */
 app.get("/keranjang", (req, res) => {
 
   const navbar = load("navbar.html");
   const footer = load("footer.html");
+  let content = load("keranjang.html");
 
   const items = cart.map((item, index) => `
-    <div class="cart-item">
-      <div class="cart-info">
-        <i class="fa-solid fa-box"></i>
-        <span>${item}</span>
+
+<div class="cart-item">
+
+  <img
+    src="${item.gambar}"
+    alt="${item.nama}"
+    class="cart-image"
+  >
+
+  <div class="cart-detail">
+
+    <h3>${item.nama}</h3>
+
+    <p class="cart-price">
+      ${item.harga}
+    </p>
+
+    <div class="cart-bottom">
+
+      <div class="qty-box">
+
+        <a href="/decrease/${index}" class="qty-btn">
+          -
+        </a>
+
+        <span>${item.qty}</span>
+
+        <a href="/increase/${index}" class="qty-btn">
+          +
+        </a>
+
       </div>
 
-      <a class="remove-btn" href="/remove-item/${index}">
+      <a
+        href="/remove-item/${index}"
+        class="remove-btn"
+      >
         <i class="fa-solid fa-trash"></i>
       </a>
+
     </div>
-  `).join("");
+
+  </div>
+
+</div>
+
+`).join("");
+
+  const cartContent = cart.length
+    ? items
+    : `
+      <div class="empty-cart">
+
+        <i class="fa-solid fa-cart-shopping"></i>
+
+        <h2>Keranjang Masih Kosong Nihh</h2>
+
+        <p>
+          ✨ Yuk pilih furniture favorit kamu dulu ✨
+        </p>
+
+        <a href="/katalog" class="empty-btn">
+          Belanja Sekarang
+        </a>
+
+      </div>
+    `;
+
+    const totalItem = cart.reduce(
+  (total, item) => total + item.qty,
+  0
+);
+
+const cartSummary = `
+  <h2>Ringkasan Belanja</h2>
+
+  <div class="summary-row">
+    <span>Total Item</span>
+    <strong>${totalItem}</strong>
+  </div>
+
+  <a href="#" class="checkout-btn">
+    Checkout
+  </a>
+
+  <a href="/katalog" class="continue-btn">
+    Lanjut Belanja
+  </a>
+
+  <a href="/clear-cart" class="clear-btn">
+    Kosongkan Keranjang
+  </a>
+`;
+
+
+  content = content.replace(
+    "{{CART_CONTENT}}",
+    cartContent
+  );
+
+  content = content.replace(
+  "{{CART_SUMMARY}}",
+  cartSummary
+);
 
   res.send(`
   <!DOCTYPE html>
   <html lang="id">
+
   <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    >
 
     <title>Keranjang | QueenFurni</title>
 
     <link rel="stylesheet" href="/style.css">
 
-    <link rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    >
   </head>
 
   <body>
 
     ${navbar}
-
-    <section class="cart-page">
-
-      <h1>Keranjang Belanja</h1>
-
-      <div class="cart-list">
-
-        ${cart.length ? items : `
-            <div class="empty-cart">
-
-              <i class="fa-solid fa-cart-shopping"></i>
-
-              <h2>Keranjang Masih Kosong Nihh</h2>
-
-              <p>
-               ✨ Yuk pilih furniture favorit kamu dulu ✨
-              </p>
-
-              <a href="/katalog" class="empty-btn">
-                Belanja Sekarang
-              </a>
-
-            </div>
-          `}
-      </div>
-
-      ${cart.length ? `
-      <div class="cart-action">
-
-        <a href="/katalog" class="btn-shop">
-         Lanjut Belanja
-         </a>
-
-         <a href="/clear-cart" class="btn-clear">
-           Kosongkan
-        </a>
-
-      </div>
-      ` : ""}
-
-    </section>
-
+    ${content}
     ${footer}
 
   </body>
+
   </html>
   `);
 
 });
-
 
 /* HAPUS ITEM           */
 app.get("/remove-item/:index", (req, res) => {
@@ -434,7 +537,7 @@ app.get("/product/:slug", (req, res) => {
       <div class="detail-buttons">
 
         <a
-          href="/add-to-cart?product=${product.nama}"
+          href="/add-to-cart?id=${product.id}"
           class="buy-btn"
         >
           <i class="fa-solid fa-cart-plus"></i>
@@ -459,6 +562,35 @@ app.get("/product/:slug", (req, res) => {
   </body>
   </html>
 
+  `);
+
+});
+
+/* ROUTE KATALOG*/
+app.get("/katalog", (req, res) => {
+
+  const navbar = load("navbar.html");
+  const footer = load("footer.html");
+  const content = load("katalog.html");
+
+  res.send(`
+  <!DOCTYPE html>
+  <html lang="id">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Katalog | QueenFurni</title>
+
+    <link rel="stylesheet" href="/style.css">
+  </head>
+
+  <body>
+    ${navbar}
+    ${content}
+    ${footer}
+  </body>
+  </html>
   `);
 
 });
