@@ -107,5 +107,33 @@
     "harga": "Rp 1.000.000",
     "gambar": "/image/kursi2.jpg",
     "deskripsi": "Kursi dengan desain klasik untuk suasana ruangan yang lebih nyaman."
+  },
+  {
+    "id": 12,
+    "slug": "sofa-luxury",
+    "nama": "Sofa Luxury",
+    "kategori": "Sofa",
+    "harga": "Rp 11.000.000",
+    "gambar": "/image/sofa-luxury.jpg",
+    "deskripsi": "Sofa mewah dengan desain elegan dan kenyamanan maksimal."
+  },
+  {
+    "id": 13,
+    "slug": "lemari-classic",
+    "nama": "Lemari Classic",
+    "kategori": "Lemari",
+    "harga": "Rp 7.300.000",
+    "gambar": "/image/lemari.jpg",
+    "deskripsi": "Lemari multifungsi dengan kapasitas besar dan elegan."
+  },
+  {
+    "id": 14,
+    "slug": "tempat-tidur-nyaman",
+    "nama": "Tempat Tidur Nyaman",
+    "kategori": "Tempat Tidur",
+    "harga": "Rp 17.900.000",
+    "gambar": "/image/Tempat-tidur-nyaman.jpg",
+    "deskripsi": "Nikmati kenyamanan tidur anda dengan Tempat Tidur yang Nyaman."
   }
+
 ]

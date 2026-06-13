@@ -32,7 +32,7 @@ app.get("/", (req, res) => {
   const navbar = load("navbar.html");
   let content = load("index.html");
   const homeProducts = products
-  .slice(0, 6)
+  .slice(0, 9)
   .map(product => `
 
     <div class="card">
@@ -482,6 +482,7 @@ app.get("/product/:slug", (req, res) => {
     return res.status(404).send("Product tidak ditemukan");
   }
 
+/*DETAIL PRODUCT*/
   res.send(`
 
   <!DOCTYPE html>
