@@ -941,7 +941,7 @@ footer {
 /* Halaman kontak ---------------------------------*/
 
 .contact-hero{
-    padding:90px 10% 70px;
+    padding:50px 10% 70px;
     text-align:center;
     background:#efe9df;
 }
@@ -995,7 +995,7 @@ footer {
     align-items:center;
     justify-content:center;
     border-radius:50%;
-    background:#222;
+    background:#644704;
     color:white;
     font-size:20px;
 }
@@ -1033,7 +1033,7 @@ footer {
 .contact-form button{
     padding:15px;
     border:none;
-    background:#222;
+    background:#644704;
     color:white;
     font-size:16px;
     border-radius:12px;

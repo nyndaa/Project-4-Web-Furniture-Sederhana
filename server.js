@@ -345,7 +345,7 @@ app.get("/keranjang", (req, res) => {
         <h2>Keranjang Masih Kosong Nihh</h2>
 
         <p>
-          ✨ Yuk pilih furniture favorit kamu dulu ✨
+           Yuk pilih furniture favorit kamu dulu 
         </p>
 
         <a href="/katalog" class="empty-btn">
