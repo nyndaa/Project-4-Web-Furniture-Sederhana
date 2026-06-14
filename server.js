@@ -586,30 +586,38 @@ app.get("/product/:slug", (req, res) => {
 
 });
 
-/* ROUTE KATALOG*/
-app.get("/katalog", (req, res) => {
+/* TENTANG KAMI */
+app.get("/tentang-kami", (req, res) => {
 
   const navbar = load("navbar.html");
   const footer = load("footer.html");
-  const content = load("katalog.html");
+  const content = load("TentangKami.html");
 
   res.send(`
   <!DOCTYPE html>
   <html lang="id">
+
   <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport"
+      content="width=device-width, initial-scale=1.0">
 
-    <title>Katalog | QueenFurni</title>
+    <title>Tentang Kami | QueenFurni</title>
 
     <link rel="stylesheet" href="/style.css">
+
+    <link rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
   </head>
 
   <body>
+
     ${navbar}
     ${content}
     ${footer}
+
   </body>
+
   </html>
   `);
 
@@ -619,3 +627,5 @@ app.get("/katalog", (req, res) => {
 app.listen(PORT, () => {
   console.log(`jalan di http://localhost:${PORT}`);
 });
+
+

@@ -309,14 +309,6 @@ body {
   font-size:14px;
 }
 
-/* FOOTER */
-footer {
-  text-align: center;
-  padding: 20px;
-  background: #644704;
-  color: white;
-}
-
 
 /*BAGIAN KATALOG------------------------------------------------------------------------------------------*/
 /* SEARCH SECTION */
@@ -1083,6 +1075,115 @@ footer {
 
     .contact-hero h1{
         font-size:42px;
+    }
+
+}
+
+/*FOOTER-----------------------------*/
+.footer{
+    background:#644704;
+    color:#fff;
+    padding:40px 10%;
+}
+
+
+.footer-container{
+    display:grid;
+    grid-template-columns:2fr 1fr 1fr 1fr;
+    gap:50px;
+}
+
+/* LOGO FOOTER */
+.footer-logo{
+    font-size:28px;
+    font-weight:800;
+    letter-spacing:3px;
+    display:flex;
+    align-items:center;
+    gap:10px;
+    margin-bottom:20px;
+    transition:.3s;
+    cursor:pointer;
+}
+
+.footer-logo i{
+    font-size:30px;
+}
+
+.footer-logo:hover{
+    color:#ffcc70;
+}
+
+/* DESKRIPSI */
+.footer-desc{
+    line-height:1.8;
+    margin-bottom:20px;
+}
+
+/* JUDUL KOLOM */
+.footer-column h4{
+    margin-bottom:15px;
+}
+
+/* LINK */
+.footer-column p{
+    margin-bottom:10px;
+}
+
+.footer-column a{
+    color:#fff;
+    text-decoration:none;
+    position:relative;
+}
+
+/* hover underline seperti navbar */
+.footer-column a::after{
+    content:"";
+    position:absolute;
+    left:0;
+    bottom:-4px;
+    width:0;
+    height:2px;
+    background:#ffcc70;
+    transition:.3s;
+}
+
+.footer-column a:hover::after{
+    width:100%;
+}
+
+.footer-column a:hover{
+    color:#ffcc70;
+}
+
+/* GARIS */
+.footer-line{
+    margin:40px 0 20px;
+    border:none;
+    border-top:1px solid rgba(255,255,255,.2);
+}
+
+/* BAGIAN BAWAH */
+.footer-bottom{
+    display:flex;
+    justify-content:space-between;
+    flex-wrap:wrap;
+    gap:15px;
+    color:#ddd;
+    font-size:14px;
+}
+
+/* RESPONSIVE */
+@media(max-width:768px){
+
+    .footer-container{
+        grid-template-columns:1fr;
+        gap:30px;
+    }
+
+    .footer-bottom{
+        flex-direction:column;
+        text-align:center;
     }
 
 }
